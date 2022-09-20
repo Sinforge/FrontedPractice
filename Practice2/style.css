@@ -1,6 +1,21 @@
-﻿
+﻿@font-face {
+    font-family: "Poppins-Header";
+    src: url("fonts/Poppins-Black.ttf");
+}
+@font-face {
+    font-family: "Poppins-Navigation";
+    src: url("fonts/Poppins-SemiBold.ttf");
+}
+@font-face {
+    font-family: "Poppins-Regular";
+    src: url("fonts/Poppins-Regular.ttf");
+}
 nav {
+    border-style: solid;
     background-color: #E0B863;
+}
+h1,h2,h3 {
+    font-family: Poppins-Header, sans-serif;
 }
 ul {
     list-style-type: none;
@@ -13,23 +28,30 @@ ul {
 
 li {
     float: left;
-}
+    overflow: hidden;
+    text-align: center;
 
+}
 li a {
+    border-width: 2px;
+    border-style: solid;
+    font-family: Poppins-Navigation, sans-serif;
     display: block;
     color: #ffffff;
+    border-color: black;
     text-align: center;
-    padding: 14px 10px;
+    padding: 20px 20px 30px 20px;
     text-decoration: none;
 }
-
+li img {
+    vertical-align: middle;
+}
 li a:active {
     color: blue;
 }
 
-aside > p {
-    font: ""
-}
+
+
 li a:visited {
     color: red;
 }
@@ -42,17 +64,26 @@ li a:hover {
 .active {
     background-color: darkorange;
 }
+
+
 aside {
     background: #f62222;
     padding: 10px;
     width: 200px;
     float: right;
     border-radius: 50px;
+    border-style: dotted;
 }
 body {
+    margin: 0 0 0 0;
     background-color: #f55252;
+}
+pre {
+    font-family: Poppins-Regular, serif;
 }
 
 footer {
+    border-top-style: solid;
+    border-top-color: black;
     text-align: center;
 }
