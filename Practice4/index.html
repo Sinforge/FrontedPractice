@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="text-align: center">
+  <h1 style="text-align: center">User Registration</h1>
+  <div class="registration-form">
+    <form method="get" action="index.html" style="display: inline-block">
+      <div class="input-block">
+        <label for="userName">User Name:</label>
+        <input type="text" name="UserName" id="userName" required placeholder="Input Username" />
+      </div>
+
+      <div class="input-block">
+        <label for="telephone">Email:</label>
+        <input type="tel" name="telephone" id="telephone">
+      </div>
+
+      <div class="input-block">
+        <label for="pass">Password</label>
+        <input type="password" name="password" id="pass" required pattern="[A-Za-z0-9]{10}">
+      </div>
+      <div class="input-block">
+
+        <label for="profile_img">Choose Profile Image</label>
+        <input type="file" name="profile_img" id="profile_img">
+      </div>
+
+      <div class="input-block">
+        <label for="date">Birth Day</label>
+        <input type="datetime-local" name="date" id="date">
+      </div>
+
+      <div class="input-block">
+        <label for="EmailSendAccept">Do you agree to receive email notifications?</label>
+        <input type="radio" name="EmailSendAccept" id="EmailSendAccept" checked>
+      </div>
+
+      <div class="input-block">
+        <label for="Agreement">User agreement</label>
+        <input type="checkbox" name="Agreement" id="Agreement">
+      </div>
+      <div class="input-block">
+        <input type="submit" value="Register" name="Register">
+      </div>
+    </form>
+  </div>
+    <div class="leave-comments">
+      <form method="post" action="/some_action">
+        <fieldset>
+          <legend>Leave comments about our web-page</legend>
+          <label>Choose your option
+            <select multiple required size="2">
+              <option name="very_bad" value="very_bad">Your web-page very bad</option>
+              <option name="all_good" value="all_good">Problems not exist, all good</option>
+          </select>
+
+          </label>
+          <textarea cols="30" rows="20" required placeholder="Here u can leave comments about our web-page" minlength="10" maxlength="50"></textarea>
+          <button type="submit">Send your review</button>
+        </fieldset>
+      </form>
+    </div>
+    <div>
+      <iframe style="margin-top: 30px" src="page-with-video.html" width="400" height="300">
+      </iframe>
+    </div>
+    <footer>
+
+    </footer>
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+@font-face {
+    font-family: "GemumuExtraLight";
+    src: url("fonts/static/GemunuLibre-ExtraLight.ttf");
+}
+@font-face {
+    font-family: "GemunuBold";
+    src: url("fonts/static/GemunuLibre-Bold.ttf");
+}
+@font-face {
+    font-family: "GemunuRegular";
+    src: url("fonts/static/GemunuLibre-Regular.ttf");
+}
+.input-block {
+    margin-top: 20px;
+    padding: 0;
+}
+.registration-form {
+    border-radius: 10px 10px;
+    border-style: solid;
+    display: inline-flex;
+    align-self: center;
+    background-color: rgb(179,121,173);
+    padding: 0;
+    width: auto;
+}
+
+input {
+    border-radius: 30px 30px;
+    padding: 10px;
+}
+input:focus {
+    box-shadow: 1px 1px 2px 0 rebeccapurple;
+    color:rebeccapurple;
+    background-color: burlywood;
+}
+input::placeholder {
+    color: mediumvioletred;
+    font-size: 1rem;
+    font-family: GemumuExtraLight, serif;
+
+}
+textarea::placeholder {
+    color: mediumvioletred;
+    font-size: 1rem;
+    font-family: GemumuExtraLight, serif;
+}
+
+.leave-comments {
+    margin-top: 40px;
+    display: inline-flex;
+    align-self: center;
+    padding: 0;
+    border-radius: 10px 10px;
+    width: auto;
+    background-color: rgb(179,121,173);
+
+}
+.leave-comments fieldset {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+body {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(136,103,194);
+    font-family: GemunuRegular, sans-serif;
+
+}
+
+select {
+    display: block;
+    font-size: 16px;
+    font-family: GemumuExtraLight ,sans-serif;
+    color: orangered;
+}
+button {
+    background-color: mediumpurple;
+    color: white;
+    font-family: GemumuExtraLight, sans-serif;
+
+}
