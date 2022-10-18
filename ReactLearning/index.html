@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+
+  <title>Hello React!</title>
+
+  <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+  class Form extends React.Component {
+    initialState = {
+      name: '',
+      age: 0,
+    }
+    state = this.initialState
+
+    handleChange = (event) => {
+      const { name, value } = event.target
+      this.setState({
+        [name]: value,
+      })
+    }
+
+    submitForm = () => {
+      this.props.handleSubmit(this.state)
+      this.setState(this.initialState)
+    }
+    render() {
+      const {name, age} = this.state;
+
+      return (
+              <form>
+                <label htmlFor="name">Name</label>
+                <input
+                type="text"
+                name="name"
+                id="name"
+                value={name}
+                onChange={this.handleChange}
+                />
+                <label htmlFor="age">Age</label>
+                <input
+                type="number"
+                name="age"
+                id="age"
+                value={age}
+                onChange={this.handleChange}
+
+                />
+                <input type="button" value="Submit" onClick={this.submitForm}/>
+              </form>
+      )
+    }
+  }
+  class TableOfEmployers extends React.Component {
+    render() {
+      const {removeEmployee} =this.props.removeEmployee
+      const rows = this.props.employers.map((row, index) => {
+        return (
+                <tr key={index}>
+                  <td>{row.name}</td>
+                  <td>{row.age}</td>
+                  <td>
+                    <button onClick={() => this.props.removeEmployee(index)}>Delete</button>
+                  </td>
+                </tr>
+        )
+      })
+      return (
+              <table>
+                <tbody>
+                {rows}
+                </tbody>
+              </table>
+      )
+    }
+  }
+
+  class App extends React.Component {
+    state = {
+      employers: [ {
+        name: "Bob",
+        age: 19
+      },
+        {
+          name: "Aboba",
+          age: 30
+        },
+        {
+          name: "BigBoy",
+          age: 18
+        }]
+    }
+    handleSubmit = (employee) => {
+      this.setState({employers: [...this.state.employers, employee]})
+    }
+    removeEmployee = (index) => {
+      const { employers } = this.state
+      this.setState({
+        employers: employers.filter((character, i) => {
+          return i !== index
+        }),
+      })
+    }
+
+    render() {
+      const {employers} =  this.state
+      return (
+              <div>
+                <h1>Hello world</h1>
+                <TableOfEmployers employers={employers} removeEmployee={this.removeEmployee}/>
+                <Form handleSubmit={this.handleSubmit}/>
+              </div>
+      )
+    }
+  }
+  ReactDOM.render(<App/>, document.getElementById('root'))
+</script>
+</body>
+</html>
