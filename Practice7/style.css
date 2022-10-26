@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #170715;
+    background-color: white;
 }
 .cards-container {
     display:flex;
@@ -138,14 +138,10 @@ body {
 }
 @keyframes moving-squares {
     0%{
-        transform: translateY(30px);
+        transform: translateY(100%);
     }
-    50%{
-        transform: translateX(-30px);
-    }
-    100% {
-        transform: translateY(30px);
-    }
+
+
 }
 .cards-container .card .card-info {
     position: relative;
@@ -166,8 +162,8 @@ body {
 
 body{
     margin: 0;
-    paddign:0;
-    background: #d3d3d3;
+    padding:0;
+    background: white;
 }
 
 .social{
@@ -252,4 +248,88 @@ footer {
 }
 .social {
     height: fit-content;
+}
+
+.login-form {
+    position: relative;
+    background-color: rgba(131, 111, 111, 0.05);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+    z-index:2;
+}
+.input-block {
+    padding: 30px 30px 30px 30px;
+}
+.block {
+    z-index: 1;
+    background: rgba(17, 15, 15, 0.05);
+    width: 50px;
+    backdrop-filter: blur(10px);
+    height: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-radius: 8px;
+}
+
+#block1 {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    animation: random-moving-blocks 11s linear infinite;
+    animation-direction: alternate;
+    animation-delay: 1s;
+}
+#block2 {
+    position: absolute;
+    top: -60px;
+    left: calc(100% / 2);
+    z-index: 2;
+    animation-delay: 2s;
+    animation: random-moving-blocks 7s ease-in-out infinite;
+}
+
+#block3 {
+    position: absolute;
+    left: -40px;
+    bottom: calc(100% / 2);
+    animation: random-moving-blocks 10s ease infinite;
+    animation-direction: alternate;
+    animation-delay: 3s;
+
+}
+#block4 {
+    position: absolute;
+    right: calc(100%/ 3);
+    bottom: -30px;
+    animation-delay: 6s;
+    animation: random-moving-blocks 8s ease infinite;
+}
+#block5 {
+    position: absolute;
+    right: -70px;
+    bottom: calc(100% / 3);
+    z-index: 2;
+    animation-direction: alternate;
+    animation-delay: 7s;
+    animation: random-moving-blocks 12s ease-out infinite;
+}
+
+@keyframes random-moving-blocks {
+    0 % {
+        transform: translateX(50px);
+    }
+    30% {
+        transform: translateY(-40px);
+    }
+    60% {
+        transform: translateX(-50px);
+    }
+    90% {
+        transform: translateY(40px);
+    }
+
+
 }
