@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button id="draw-button">click me to draw</button>
+    <script>
+        var drawMode = false;
+        var drawButton = document.getElementById("draw-button");
+        drawButton.addEventListener("click", () => {
+            drawMode = !drawMode;
+            console.log(drawMode);
+        });
+        document.addEventListener("mousemove", (event) => {
+           if(drawMode) {
+               createDivForDrawing(event.x, event.y);
+           }
+        });
+        function createDivForDrawing(x, y) {
+            console.log("Im draw");
+            var elem = document.createElement('div');
+            elem.style.top = y + "px";
+            elem.style.left = x + "px";
+            elem.className = "elem";
+            document.body.append(elem);
+
+        }
+    </script>
+</body>
+</html>

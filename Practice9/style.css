@@ -1,0 +1,11 @@
+.elem {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    z-index: 9;
+}
+#draw-button {
+    position: absolute;
+    z-index: 10;
+}
