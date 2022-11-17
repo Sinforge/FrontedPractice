@@ -1,11 +1,23 @@
 .card-container {
     width: 100%;
     height: fit-content;
+    display: flex;
 }
 .card-prac {
     font-size: 20px;
     width: 100px;
     height: 100px;
-    background-color: grey;
+    background-color: firebrick;
     color: white;
+    margin-left: 30px;
+}
+body {
+    background-color: black;
+    color:white;
+}
+button, input[type="submit"] {
+    border-style: none;
+    background-color: grey;
+    color:white;
+    margin-bottom: 20px;
 }
