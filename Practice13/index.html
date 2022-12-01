@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Exercise1</h1>
+    <div id="contents">
+        <a href="https://github.com/Sinforge">github</a>
+        <a href="https://www.youtube.com/watch?v=SEvR78OhGtw&t=21s">youtube</a>
+        <a href="https://vk.com/feed">vk</a>
+    </div>
+    <script>
+        let contents = document.getElementById("contents");
+        contents.addEventListener("click", (event)=> {
+            event.preventDefault();
+            if(event.target.tagName === "A") {
+                let leaveOrNot = prompt("Do want leave this page", "no");
+                if(leaveOrNot.toLowerCase() === "yes") {
+                    window.open(event.target.getAttribute("href"))
+                }
+            }
+        
+        });
+    </script>
+
+    <h1>Exercise 2</h1>
+    <h1>КАКОЙ ТЫ СЕГОДНЯ?</h1>
+    <div style="width:100%;background-color: grey;">
+        <div style="width:100%;background-color: grey;text-align: center;">
+            <img id="main-img" src="img/hunter.png" width="400px" height="400px"/>
+        </div>
+        <div style="display:inline-block;width: 100%;text-align: center;" id="ex2">
+            <img id="img1" width="150px" height="150px" src="img/builder.png">
+            <img id="img2" width="150px" height="150px" src="img/fisher.png">
+            <img id="img3" width="150px" height="150px" src="img/reshala.png">
+            <img id="img4" width="150px" height="150px" src="img/underwater.png">
+
+        </div>
+    </div>
+    <script>
+        let mainImg = document.getElementById("main-img");
+        let Exercise2 = document.getElementById("ex2");
+        ex2.addEventListener("click", (event)=> {
+            if(event.target.tagName === "IMG") {
+                let mainSrc = mainImg.getAttribute("src");
+                let currentSrc = event.target.getAttribute("src");
+                mainImg.setAttribute("src", currentSrc);
+                event.target.setAttribute("src", mainSrc);
+            }
+        });
+
+    </script>
+
+
+    <h1>Exercise 3</h1>
+    <div>
+        <ul id="list" style="overflow: hidden; width:100px;border-style: none;">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <script>
+        let list = document.getElementById("list");
+        list.addEventListener("click", (event)=> {
+            if(event.target.tagName === "LI") {
+                if(event.ctrlKey || event.metaKey) {
+                    if(event.target.className === "selected") {
+                        event.target.className = "";
+                    }
+                    else {
+                        event.target.className = "selected"
+                    }
+                }
+                else {
+                    for(let i = 0; i < list.childElementCount;i++) {
+                        list.children[i].className = "";
+                    }
+                    event.target.className = "selected";
+                }
+            }
+        });
+        
+    </script>
+
+
+    <h1>Exercise 4</h1>
+
+        <div id="slider" style="margin-left: 100px;height: 10px; width:60%; background-color: grey; text-align: center;position: relative;">
+            <div id="thumb" style="background-color: blue; height: 20px; width: 10px; position: absolute;bottom: -5px">
+                
+            </div>
+    
+        </div>
+    
+    <script>
+        let thumb = document.getElementById("thumb");
+        let slider = document.getElementById("slider");
+        const sliderX = slider.offsetLeft;
+        console.log(sliderX);
+        const startX = thumb.offsetLeft;
+        const endX = slider.offsetWidth;
+        let lastPosition = 0;
+        let isPress = false;
+        thumb.addEventListener("mousedown", ()=>{
+            isPress = true;
+            console.log("mouse down");
+        });
+
+        document.addEventListener("mouseup", ()=>isPress = false);
+        document.addEventListener("mousemove", (event)=> {
+            if (isPress) {
+                console.log(event.x);
+                console.log(sliderX);
+                console.log(sliderX+endX);
+                console.log(event.x >= sliderX && (event.x <= (sliderX + endX)));
+                if(event.x >= sliderX && (event.x <= (sliderX + endX))) {
+                    thumb.style.left =  (event.x - sliderX) + "px";
+                }
+                else if (event.x < slideX) {
+                    thumb.style.left = 0 + "px";
+                }
+                else {
+                    thumb.style.left = endX + "px";
+                }
+
+            }
+        });
+    </script>
+
+    <h1>Exercise 5</h1>
+
+    <div id="ex5" onselectstart="return false" style="display:flex;">
+        <div id="goods-for-sale" >
+            <h2>All goods</h2>
+            <div class="goods">
+                <img src="img/potato.png" width="100px"  height="100px" />
+                <h3>Potato</h3>
+                <h3>100</h3>
+            </div>
+            <div  class="goods">
+                <img src="img/tomato.jpg" width="100px" height="100px"  />
+                <h3>Tomato</h3>
+                <h3>150</h3>
+            </div>
+            <div  class="goods">
+                <img src="img/cucumber.jpg" width="100px" height="100px"/>
+                <h3>Cucumber</h3>
+                <h3>500</h3>
+            </div>
+        </div>
+        <div id="goods-in-basket" style="margin-left: 100px;">
+            <h2>Your basket</h2>
+            <h2>Всего:<span id="result">0</span></h2>
+        </div>
+        
+    </div>
+
+    <script>
+        let allGoods = document.getElementById("ex5");
+        let goodsForSale = document.getElementById("goods-for-sale");
+        let goodsInBasket = document.getElementById("goods-in-basket");
+        let takedGood;
+        let isTaked = false;
+        let result = document.getElementById("result");
+        goodsForSale.addEventListener("mousedown", (event)=>{
+            takedGood = event.target.closest(".goods");
+            if(takedGood !== null && takedGood !== undefined ) {
+                isTaked = true;
+            }
+        });
+        allGoods.addEventListener("mouseup", (event)=> {
+            console.log(isTaked);
+            let foundedSaleBlock = event.target.closest("#goods-in-basket");
+            console.log(foundedSaleBlock);
+            console.log("SALE BLOCK FOUNDED: ", foundedSaleBlock !== null && foundedSaleBlock !== undefined);
+
+            if(foundedSaleBlock !== null && foundedSaleBlock !== undefined) {
+                console.log("We take good: ", isTaked);
+                if(isTaked) {
+                
+                    let alreadyInBasket = false;
+                    let foundedChilren;
+                    for(let i  =2 ;  i < goodsInBasket.childElementCount;i++) {
+                        console.log("Taked good name:", takedGood);
+                        console.log("Good in basket: ",goodsInBasket.children[i]);
+                        if(goodsInBasket.children[i].children[1].textContent === takedGood.children[1].textContent) {
+                            alreadyInBasket = true;
+                            foundedChilren = goodsInBasket.children[i];
+                            break;
+                        }
+                    }
+                    if(alreadyInBasket) {
+                        console.log("im repeated");
+                        foundedChilren.children[3].textContent = Number(foundedChilren.children[3].textContent) + 1;
+                        result.textContent = Number(result.textContent) + Number(foundedChilren.children[2].textContent);
+                    }
+                    else {
+                        console.log(takedGood.children[1].textContent);
+                        let newGoodInBasket = document.createElement("div");
+                        newGoodInBasket.className = "goods";
+
+                        let img = document.createElement("img");
+                        console.log(takedGood.children[0].src);
+                        img.setAttribute("src", takedGood.children[0].getAttribute("src"));
+                        img.setAttribute("width", "100px");
+                        img.setAttribute("height", "100px");
+                        newGoodInBasket.appendChild(img);
+
+                        let name = document.createElement("h3");
+                        console.log(takedGood.children[1]);
+                        name.textContent = takedGood.children[1].textContent;
+                        newGoodInBasket.appendChild(name);
+
+
+                        let price = document.createElement("h4");
+                        price.textContent = takedGood.children[2].textContent;
+                        newGoodInBasket.appendChild(price);
+
+                        let count = document.createElement("h5");
+                        count.textContent = "1";
+                        newGoodInBasket.appendChild(count);
+
+
+                        goodsInBasket.appendChild(newGoodInBasket);
+
+                        result.textContent = Number(result.textContent) + Number(takedGood.children[2].textContent);
+                    }
+                }
+            }
+        
+            isTaked = false;
+        });
+
+    </script>
+    <h1>Exercise 6</h1>
+
+
+    <img id="quest" src="img/quest.png" width="100px" height="100px">
+    <script>
+        function draw(timePassed) {
+                document.getElementById("quest").style.transform = "rotate(" + (timePassed*18) + "deg)"; 
+        }
+        document.getElementById("quest").addEventListener("click", ()=> {
+            let start = Date.now();
+            console.log(start);
+            let timer = setInterval(()=> {
+                let timePassed = Date.now()-start;
+                console.log(timePassed);
+                if(timePassed >=  5000) {
+                    clearInterval(timer);
+                    return;
+                }
+                draw(timePassed);
+            },1);
+            
+        });
+    </script>
+
+    <div style="display:flex;width: 100%; position: relative;">
+        <img id="ball" style="position: absolute; left:0" src="img/ball.png" width="100px" height="100px"/>
+        <img style="position: absolute; right: 0;" src="img/gates.png" width="100px" height="100px"/>
+    </div>
+    <script>
+        let ball = document.getElementById("ball"); 
+        let widthOfField = ball.parentElement.clientWidth;
+        const step = widthOfField / 850;
+        console.log(widthOfField);
+        console.log(step);
+        let previostLeft = 0
+        function drawBall(timePassed1) {
+                previostLeft = previostLeft + step;
+                ball.style.left = Math.floor((previostLeft)) + "px";
+                ball.style.transform = "rotate(" + (timePassed1*1) + "deg)"; 
+        }
+        document.getElementById("ball").addEventListener("click", ()=> {
+            let start1 = Date.now();
+            console.log(start1);
+            let timer1 = setInterval(()=> {
+                let timePassed1 = Date.now()-start1;
+                console.log(timePassed1);
+                if(timePassed1 >=  3000) {
+                    clearInterval(timer1);
+                    ball.style.left = "0px";
+                    ball.style.transform = "rotate(0deg)";
+                    return;
+                }
+                drawBall(timePassed1);
+            },1);
+            
+        });
+    </script>
+
+</body>
+</html>
