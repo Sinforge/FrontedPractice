@@ -138,17 +138,17 @@
         <div id="goods-for-sale" >
             <h2>All goods</h2>
             <div class="goods">
-                <img src="img/potato.png" width="100px"  height="100px" />
+                <img src="img/potato.png" onmousedown="return false;" width="100px"  height="100px" />
                 <h3>Potato</h3>
                 <h3>100</h3>
             </div>
             <div  class="goods">
-                <img src="img/tomato.jpg" width="100px" height="100px"  />
+                <img src="img/tomato.jpg" onmousedown="return false;" width="100px" height="100px"  />
                 <h3>Tomato</h3>
                 <h3>150</h3>
             </div>
             <div  class="goods">
-                <img src="img/cucumber.jpg" width="100px" height="100px"/>
+                <img src="img/cucumber.jpg" onmousedown="return false;" width="100px" height="100px"/>
                 <h3>Cucumber</h3>
                 <h3>500</h3>
             </div>
@@ -268,7 +268,7 @@
     <script>
         let ball = document.getElementById("ball"); 
         let widthOfField = ball.parentElement.clientWidth;
-        const step = widthOfField / 850;
+        const step = widthOfField / 550;
         console.log(widthOfField);
         console.log(step);
         let previostLeft = 0
@@ -285,6 +285,7 @@
                 console.log(timePassed1);
                 if(timePassed1 >=  3000) {
                     clearInterval(timer1);
+                    previostLeft = 0;
                     ball.style.left = "0px";
                     ball.style.transform = "rotate(0deg)";
                     return;
